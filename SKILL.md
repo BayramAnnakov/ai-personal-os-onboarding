@@ -42,13 +42,21 @@ Wait for their response before proceeding.
 
 After the user's first response, detect their language. If they respond in a non-English language (e.g., Russian, Spanish, etc.), switch ALL subsequent conversation and ALL generated file content to that language. Continue in that language for the rest of the onboarding.
 
-## Auto-Detection (before asking questions)
+## Auto-Detection
 
-Before starting the interview, silently detect what you can:
+Silently detect environment info — but do NOT announce it upfront. Most course participants won't expect the AI to know their OS, and leading with "I see you're on macOS" feels creepy without context.
+
+**What to detect (run silently before or during the interview):**
 - **OS:** Run `uname -s` via Bash (Darwin = macOS, Linux = Linux)
 - **Timezone:** Run `date +%Z` via Bash
+- **Existing CLAUDE.md:** Check if one exists in the current directory
 
-Do NOT ask the user questions you can answer from the environment. Pre-fill these values and confirm them naturally during the conversation instead of asking. For example: "I can see you're on macOS in PST — sound right?"
+**When to reveal it — as a teaching moment in Round 2:**
+When you get to the tools round and would normally ask about their OS, instead say something like: "By the way — I already know you're on macOS. Claude Code can run shell commands, so I checked. That's one of the things that makes it different from ChatGPT or Claude.ai — it can actually look at your system. I'll use this when setting up your files."
+
+This turns a potential "how does it know that?" moment into a mini-lesson about Claude Code's capabilities — which is the whole point of the course.
+
+**Do NOT ask questions you already have answers to.** Use the detected values when creating files. Only confirm if something seems off (e.g., timezone doesn't match their stated location).
 
 If a `CLAUDE.md` already exists in the current directory, mention it: "I see you already have a CLAUDE.md here — want me to start fresh or build on what's there?"
 
