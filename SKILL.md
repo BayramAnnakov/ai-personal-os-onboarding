@@ -407,7 +407,7 @@ Week 2:  ░░░░░░░ 0/7
 **How achievements get detected** (for skills that update this file):
 - **First Log / Consistency / Streaks:** Count dated files in `notes/daily-log-*.md`
 - **MCP Pioneer:** Check `.mcp.json` or `~/.claude/.mcp.json` for non-default servers
-- **Skill Builder:** Glob `~/.claude/skills/*/SKILL.md`, exclude `ai-personal-os-onboarding` and `telegram-mcp-setup`
+- **Skill Builder:** Glob `~/.claude/skills/*/SKILL.md`, read each SKILL.md and check for `author:` in frontmatter. Skills with `author:` containing "Bayram Annakov" or "onsa.ai" are course-provided. Any skill without that author (or with no author field) is user-created.
 - **Knowledge Seeder:** Count `.md` files in `notes/`
 - **Data Collector:** Check if ActivityWatch is running (`pgrep -f activitywatch` or check `~/Library/Application Support/activitywatch/`)
 - **Full Stack:** Read the self-audit scores from achievements.md or a stored baseline
