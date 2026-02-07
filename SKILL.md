@@ -195,13 +195,13 @@ At the beginning of each session, read these files for full context:
 - Reference user-profile.md for personal context
 
 ## Current Priorities
-- Complete AI Personal OS course (Feb-Mar 2026)
+- Complete AI Personal OS course (Feb-Apr 2026)
 - [Specific goals they mentioned]
 - [Workflow improvements they want]
 
 ## Course
 - **Course:** AI Personal OS
-- **Duration:** 5 weeks (Feb-Mar 2026)
+- **Duration:** 5 weeks (Feb-Apr 2026)
 - **Format:** Weekly workshops + async practice
 - **Instructor:** Bayram Annakov
 - **Goal:** Build a personalized AI productivity system
@@ -259,7 +259,7 @@ Goals for the 5-week course. Structure:
 
 ## Course Info
 - **Course:** AI Personal OS
-- **Duration:** 5 weeks, Feb-Mar 2026
+- **Duration:** 5 weeks, Feb-Apr 2026
 - **Format:** Weekly workshops + async practice
 - **Instructor:** Bayram Annakov
 - **Investment:** Making every session count
