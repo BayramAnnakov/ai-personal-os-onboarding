@@ -87,7 +87,7 @@ Ask about:
 - What AI tools do you already use? → **AskUserQuestion** with multiSelect (ChatGPT, Claude, Gemini, Cursor/Copilot)
 - How comfortable are you with them? → **AskUserQuestion** (Power user / Still exploring / Mixed)
 - OS → **auto-detected** (don't ask — already detected via `uname -s`)
-- What's your primary programming language, if any? → **plain text** (it's fine if the answer is "none")
+- Do you write code at all, or is that not your thing? → **plain text** (many participants aren't developers — make it clear that's totally fine and the course works either way. If they do code, ask what language.)
 
 ### Round 3: How You Communicate
 
