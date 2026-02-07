@@ -107,6 +107,8 @@ Based on their gamification answer, set the tone in SOUL.md:
 
 After gathering all information, tell the user you're creating their files. Then create all 5 files in the current working directory.
 
+**Before creating achievements.md:** Glob `~/.claude/skills/*/SKILL.md` to get the list of currently installed skills. Use these folder names to populate the `## 🛠️ Skill Baseline` section in achievements.md. This baseline is used later to detect new skills the participant creates or installs.
+
 ### File 1: `CLAUDE.md`
 
 The personal AI instruction set. Structure it like this:
@@ -401,6 +403,14 @@ Week 2:  ░░░░░░░ 0/7
 |------|--------|-----|-------|
 | [today] | 🎬 Journey Started (onboarding) | +0 | 0 |
 
+## 🛠️ Skill Baseline
+
+Skills installed at onboarding time (used to detect new skills):
+[List each skill folder name found in ~/.claude/skills/ at onboarding time, one per line. Example:]
+- ai-personal-os-onboarding
+- telegram-mcp-setup
+[Add all skills that exist when onboarding runs. Any skill NOT on this list = new = counts toward Skill Builder achievement.]
+
 ---
 *Updated automatically by /daily-log and /weekly-review. You can also ask your AI mentor "show my progress" anytime.*
 ```
@@ -408,7 +418,7 @@ Week 2:  ░░░░░░░ 0/7
 **How achievements get detected** (for skills that update this file):
 - **First Log / Consistency / Streaks:** Count dated files in `notes/daily-log-*.md`
 - **MCP Pioneer:** Check `.mcp.json` or `~/.claude/.mcp.json` for non-default servers
-- **Skill Builder:** Glob `~/.claude/skills/*/SKILL.md`, read each SKILL.md and check for `author:` in frontmatter. Skills with `author:` containing "Bayram Annakov" or "onsa.ai" are course-provided. Any skill without that author (or with no author field) is user-created.
+- **Skill Builder:** Compare current skills (`~/.claude/skills/*/SKILL.md`) against the baseline snapshot saved during onboarding (see `## 🛠️ Skill Baseline` section below). Any skill NOT in the baseline list is new — the participant either created it or installed it after onboarding. Both count as progress.
 - **Knowledge Seeder:** Count `.md` files in `notes/`
 - **Data Collector:** Check if ActivityWatch is running (`pgrep -f activitywatch` or check `~/Library/Application Support/activitywatch/`)
 - **Full Stack:** Read the self-audit scores from achievements.md or a stored baseline
