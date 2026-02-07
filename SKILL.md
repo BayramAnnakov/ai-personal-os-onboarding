@@ -16,7 +16,11 @@ This is not a form. This is a conversation. Be curious, be warm, be real.
 Check which tools are available:
 
 **If `AskUserQuestion` tool is available (Claude Code):**
-- Use structured questions with clear options where it helps
+- Use AskUserQuestion ONLY for questions with clear, finite options (AI tools used, communication style, tone preference, gamification level, work style)
+- NEVER use AskUserQuestion for free-text answers: name, role, workday description, frustrations, goals, "what would make this worth it"
+- Maximum 2 questions per AskUserQuestion call — more than 2 feels like filling out a form
+- Between AskUserQuestion calls, always respond with a natural conversational reaction (2-3 sentences minimum) before asking the next question
+- For free-text questions, ask them as regular output text and wait for the user's response
 - Still keep the tone conversational — structured doesn't mean robotic
 
 **If `AskUserQuestion` tool is NOT available (Claude.ai, other agents):**
@@ -34,43 +38,64 @@ Introduce yourself briefly:
 
 Wait for their response before proceeding.
 
+## Language Detection
+
+After the user's first response, detect their language. If they respond in a non-English language (e.g., Russian, Spanish, etc.), switch ALL subsequent conversation and ALL generated file content to that language. Continue in that language for the rest of the onboarding.
+
+## Auto-Detection (before asking questions)
+
+Before starting the interview, silently detect what you can:
+- **OS:** Run `uname -s` via Bash (Darwin = macOS, Linux = Linux)
+- **Timezone:** Run `date +%Z` via Bash
+
+Do NOT ask the user questions you can answer from the environment. Pre-fill these values and confirm them naturally during the conversation instead of asking. For example: "I can see you're on macOS in PST — sound right?"
+
+If a `CLAUDE.md` already exists in the current directory, mention it: "I see you already have a CLAUDE.md here — want me to start fresh or build on what's there?"
+
 ## Phase 1: Discovery Interview
 
 Get to know the user through 4 rounds. Don't rush — listen to what they say and build on it.
 
+**IMPORTANT: Between each round (and between questions within a round), react to what the user shared.** Don't just acknowledge and move on. Examples:
+
+- BAD: "Got it! Now let's talk about your tools." _(too mechanical)_
+- GOOD: "Founder/solo — that's a lot of hats. I bet context-switching hits different when every context is yours. Let's see what tools you're working with..."
+
+Spend 2-3 sentences reacting before the next question. Reference specifics they mentioned. This is what makes it feel like a conversation vs. a form.
+
 ### Round 1: Who You Are
 
 Ask about:
-- What's your name? What should I call you?
-- What's your role? What company or project are you working on?
-- What does a typical workday look like for you?
-- Where are you based? (timezone matters for scheduling context)
+- What's your name? What should I call you? → **plain text** (NEVER use AskUserQuestion for names)
+- What's your role? What company or project are you working on? → **plain text** (open-ended)
+- What does a typical workday look like for you? → **plain text** (descriptive)
+- Where are you based? → **auto-detected** timezone; confirm naturally ("Looks like you're in PST — that right?")
 
 Acknowledge what they share. React naturally — if they mention something interesting, comment on it.
 
 ### Round 2: Your Tools
 
 Ask about:
-- What AI tools do you already use? (ChatGPT, Claude, Gemini, Cursor, Copilot, etc.)
-- How comfortable are you with them? Power user or still exploring?
-- What OS are you on? (macOS, Windows, Linux)
-- What's your primary programming language, if any? (It's fine if the answer is "none")
+- What AI tools do you already use? → **AskUserQuestion** with multiSelect (ChatGPT, Claude, Gemini, Cursor/Copilot)
+- How comfortable are you with them? → **AskUserQuestion** (Power user / Still exploring / Mixed)
+- OS → **auto-detected** (don't ask — already detected via `uname -s`)
+- What's your primary programming language, if any? → **plain text** (it's fine if the answer is "none")
 
 ### Round 3: How You Communicate
 
-Ask about:
-- Do you prefer detailed explanations or get-to-the-point answers?
-- Formal or casual tone? (or somewhere in between?)
-- When you're stuck on something, do you want me to just give you the answer, or walk you through figuring it out?
-- How should I handle it if I think you're going in the wrong direction — be direct, or nudge gently?
+Ask about (all good for AskUserQuestion — these have clear finite options):
+- Do you prefer detailed explanations or get-to-the-point answers? → **AskUserQuestion** (Concise / Detailed / Depends on context)
+- Formal or casual tone? → **AskUserQuestion** (Formal / Casual / In between)
+- When stuck, give the answer or walk through? → **AskUserQuestion** (Give me the answer / Walk me through / Depends on complexity)
+- How to handle disagreements? → **AskUserQuestion** (Be direct / Nudge gently / Mix of both)
 
 ### Round 4: How You Work
 
 Ask about:
-- What does a productive day look like for you? When do you do your best work?
-- What are your biggest time sinks or energy drains?
-- Do you work in long focused blocks or short bursts?
-- What's one thing about your workflow that frustrates you?
+- What does a productive day look like for you? When do you do your best work? → **plain text** (descriptive)
+- What are your biggest time sinks or energy drains? → **plain text** (descriptive)
+- Do you work in long focused blocks or short bursts? → **AskUserQuestion** (Long focused blocks / Short bursts / Depends on the day)
+- What's one thing about your workflow that frustrates you? → **plain text** (this is the most valuable free-text answer — don't constrain it)
 
 ## Phase 2: Course Goals
 
@@ -345,6 +370,8 @@ Read them. Reference them. Update them when you learn something new.
 ### File 5: `achievements.md`
 
 The gamification and progress tracker. This file is updated by /daily-log and /weekly-review skills. Use emoji and ASCII progress bars for visual engagement in the CLI.
+
+**CRITICAL — EMOJI PRESERVATION:** The achievements.md template below contains specific emojis that are ESSENTIAL to the gamification visual design. When writing this file, you MUST include every emoji exactly as shown in the template — section headers (🏆, 📊, 🔥, 🏅, 🎮, 📈, 🛠️), dashboard prefixes (🎮, ⚡, 🔥, 📅), level emojis (🌱, ⚡, 🛠️, 🏗️, 👑), badge emojis in achievement tables (🎬, 🎯, 📝, 🔥, 🔥🔥, 🔌, 🛠️, 🌱, 📊, ⭐, 🎓), and arrow characters (──→). Do NOT simplify, strip, or replace these with ASCII equivalents. The emojis make this file visually engaging in the terminal — that's the whole point of gamification.
 
 ```markdown
 # 🏆 Achievement Board — [Name]
