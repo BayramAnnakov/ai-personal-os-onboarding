@@ -1,6 +1,7 @@
 ---
 name: ai-personal-os-onboarding
-description: "Personalized onboarding for the AI Personal OS course. Runs a conversational interview to understand who you are, how you work, and what you want from the course — then creates your personal AI environment (CLAUDE.md, user-profile.md, course-goals.md, SOUL.md). Takes about 10-15 minutes. Use at the start of the course to set up your workspace."
+description: "Personalized onboarding for the AI Personal OS course. Runs a conversational interview to understand who you are, how you work, and what you want from the course — then creates your personal AI environment (CLAUDE.md, user-profile.md, course-goals.md, SOUL.md, achievements.md). Takes about 10-15 minutes. Use at the start of the course to set up your workspace."
+author: Bayram Annakov (onsa.ai)
 allowed-tools: AskUserQuestion, Write, Read, Edit, Glob, Bash
 ---
 
