@@ -138,9 +138,24 @@ Based on their gamification answer, set the tone in SOUL.md:
 
 ## Phase 4: Create the Artifacts
 
-After gathering all information, tell the user you're creating their files. Then create all 5 files in the current working directory.
+After gathering all information, transition to file creation with a brief explanation of WHAT you're about to create and WHY. The participant needs to understand the purpose before seeing files appear. Something like:
 
-**Before creating achievements.md:** Glob `~/.claude/skills/*/SKILL.md` to get the list of currently installed skills. Use these folder names to populate the `## 🛠️ Skill Baseline` section in achievements.md. This baseline is used later to detect new skills the participant creates or installs.
+> Alright, I've got everything I need. Now I'm going to create 5 files in this folder. These become your AI's memory — every time you start a new Claude Code session here, it reads these files first and remembers who you are, how you work, and what you're working toward. No more explaining yourself from scratch.
+>
+> Here's what I'm creating:
+> - **CLAUDE.md** — your AI's instruction manual (the main one it reads first)
+> - **user-profile.md** — who you are and how you work
+> - **course-goals.md** — what you're working toward this course
+> - **SOUL.md** — your AI mentor's personality and values
+> - **achievements.md** — your progress tracker with streaks, XP, and unlocked achievements
+>
+> Give me a moment...
+
+Then create all 5 files in the current working directory.
+
+**Before creating achievements.md:** Take a snapshot of currently installed skills. Explain briefly why: "One sec — I'm checking what skills you already have installed, so we can track if you create or install new ones during the course. That's one of the achievements you can unlock."
+
+Then Glob `~/.claude/skills/*/SKILL.md` to get the list. Use folder names to populate the `## 🛠️ Skill Baseline` section in achievements.md.
 
 ### File 1: `CLAUDE.md`
 
