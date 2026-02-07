@@ -107,6 +107,12 @@ The personal AI instruction set. Structure it like this:
 ```markdown
 # AI Personal OS — [Name]'s Workspace
 
+## Startup
+At the beginning of each session, read these files for full context:
+- `user-profile.md` — who I am, how I work, my preferences
+- `course-goals.md` — what I'm working toward this course
+- `SOUL.md` — your personality and mentoring style
+
 ## Context
 - **Name:** [Name]
 - **Role:** [Role] at [Company/Project]
